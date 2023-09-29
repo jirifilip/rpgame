@@ -15,15 +15,15 @@ class TextUI:
         self.entities = entities
 
     def render(self) -> str:
-        #return self.state
-        return (
-"""
-|-----|
-|     |
-| @   |
-|-----|
-"""
-        )
+        entity_type_to_character = {
+            Player: "@",
+            Wall: "|"
+        }
+        return "".join([
+            entity_type_to_character[type(entity)]
+            for entity in self.entities
+        ])
+            
         
     @staticmethod
     def _convert_text_map_to_entities(text_map: str):
