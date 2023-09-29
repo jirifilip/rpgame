@@ -11,7 +11,7 @@ def larger_map():
 """
 |-----|
 | @   |
-|     |W
+|     |
 |-----|
 """
     )
@@ -61,5 +61,12 @@ def test_has_correct_entity_counts(small_map):
     assert len(list(players)) == 1    
 
 
-def test_entities_have_correct_positions():
-    pass
+def test_player_has_correct_position(small_map):
+    ui = TextUI.from_map(small_map)
+    
+    all_players = filter_object_type(ui.entities, Player)
+    assert len(all_players) == 1
+    
+    player = all_players[0]
+    assert (player.left, player.top) == (1, 2)
+    
