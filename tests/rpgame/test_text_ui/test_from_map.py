@@ -11,7 +11,7 @@ def larger_map():
 """
 |-----|
 | @   |
-|     |
+|     |W
 |-----|
 """
     )
@@ -52,7 +52,7 @@ def test_can_be_initialized(larger_map):
     assert len(ui.entities) == 9
     
     
-def test_text_ui_has_correct_entity_counts_when_initialized_with_map(small_map):
+def test_has_correct_entity_counts(small_map):
     ui = TextUI.from_map(small_map)
     
     walls = filter_object_type(ui.entities, Wall)
@@ -61,5 +61,5 @@ def test_text_ui_has_correct_entity_counts_when_initialized_with_map(small_map):
     assert len(list(players)) == 1    
 
 
-def test_entities_have_correct_positions_when_initialized_with_map():
+def test_entities_have_correct_positions():
     pass
