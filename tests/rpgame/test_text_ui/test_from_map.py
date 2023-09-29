@@ -21,7 +21,7 @@ def larger_map():
 def small_map():
     yield (
 """
- _
+|_|
 | |
 |@|
 |_|
@@ -49,7 +49,7 @@ def small_map():
 def test_can_be_initialized(small_map):
     ui = TextUI.from_map(small_map)
     
-    assert len(ui.entities) == 9
+    assert len(ui.entities) == 11
     
     
 def test_has_correct_entity_counts(small_map):
@@ -57,7 +57,7 @@ def test_has_correct_entity_counts(small_map):
     
     walls = filter_object_type(ui.entities, Wall)
     players = filter_object_type(ui.entities, Player)
-    assert len(list(walls)) == 8
+    assert len(list(walls)) == 10
     assert len(list(players)) == 1    
 
 
@@ -71,3 +71,7 @@ def test_player_has_correct_position(small_map):
     assert (player.left, player.top) == (1, 2)
     
 
+def test_small_map_has_correct_room_dimensions(small_map):
+    ui = TextUI.from_map(small_map)
+    
+    assert ui.room_dimensions == (3, 4)

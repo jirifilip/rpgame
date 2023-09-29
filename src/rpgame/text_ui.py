@@ -1,3 +1,5 @@
+from typing import List, Tuple
+
 from rpgame.entities import Player, Wall
 
 
@@ -10,8 +12,14 @@ class TextUI:
         "_": Wall
     }
 
-    def __init__(self, initial_state: str, entities = None):
+    def __init__(
+            self,
+            initial_state: str,
+            room_dimensions: Tuple[int, int],
+            entities = None,
+        ):
         self.state = initial_state
+        self.room_dimensions = room_dimensions
         self.entities = entities
 
     def render(self) -> str:
@@ -19,6 +27,7 @@ class TextUI:
             Player: "@",
             Wall: "|"
         }
+        
         return "".join([
             entity_type_to_character[type(entity)]
             for entity in self.entities
@@ -26,19 +35,30 @@ class TextUI:
             
         
     @staticmethod
-    def _convert_text_map_to_entities(text_map: str):
+    def _convert_text_map_to_entities(text_map_matrix: List[List[str]]):
         factory_map = TextUI._CHARACTER_TO_ENTITY_FACTORY
-        text_map_rows = text_map.strip().split("\n")        
 
         return [
             factory_map[character](left_idx, top_idx)
-            for top_idx, row in enumerate(text_map_rows)
+            for top_idx, row in enumerate(text_map_matrix)
             for left_idx, character in enumerate(row)
             if character in factory_map
         ]
-
+        
+    @staticmethod
+    def _extract_room_dimensions(text_map_matrix: List[List[str]]):
+        height = len(text_map_matrix)
+        width = len(text_map_matrix[0])
+        
+        return width, height
 
     @classmethod
     def from_map(cls, text_map: str):
-        entities = cls._convert_text_map_to_entities(text_map)
-        return TextUI(initial_state="", entities=entities)
+        text_map_matrix = text_map.strip().split("\n")
+        
+        room_dimensions = cls._extract_room_dimensions(text_map_matrix)
+        
+        entities = cls._convert_text_map_to_entities(text_map_matrix)
+        return TextUI(initial_state="", room_dimensions=room_dimensions, entities=entities)
+
+    
