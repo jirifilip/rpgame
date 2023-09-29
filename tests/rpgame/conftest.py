@@ -5,7 +5,7 @@ from rpgame.text_ui import TextUI
 from typing import List, Tuple, Type
 
 
-def create_world_with_player(initial_state: str) -> Tuple[TextUI, Player]:
+def create_ui_with_player(initial_state: str) -> Tuple[TextUI, Player]:
     player = Player(0, 0)
     board = TextUI(initial_state, entities=[player])
     return board, player
