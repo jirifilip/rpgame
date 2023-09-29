@@ -83,7 +83,6 @@ profile_default/
 ipython_config.py
 
 .python-version
-poetry.lock
 .poetry_installed
 
 __pypackages__/
