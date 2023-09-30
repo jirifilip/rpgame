@@ -11,3 +11,9 @@ class Player:
     
     def move(self, relative_left: float = 0, relative_top: float = 0) -> None:
         pass
+    
+    
+class Emptiness:
+    def __init__(self, left: float, top: float):
+        self.left = left
+        self.top = top

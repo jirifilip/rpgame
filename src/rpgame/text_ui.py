@@ -1,6 +1,7 @@
 from typing import List, Tuple
 
-from rpgame.entities import Player, Wall
+from rpgame.entities import Emptiness, Player, Wall
+from rpgame.utils import create_2d_list, stringify_2d_list
 
 
 class TextUI:
@@ -9,7 +10,11 @@ class TextUI:
     _CHARACTER_TO_ENTITY_FACTORY = {
         "@": Player,
         "|": Wall,
-        "_": Wall
+        "_": Wall,
+    }
+    _ENTITY_TYPE_TO_CHARACTER = {
+        Player: "@",
+        Wall: "|",
     }
 
     def __init__(
@@ -23,17 +28,19 @@ class TextUI:
         self.entities = entities
 
     def render(self) -> str:
-        entity_type_to_character = {
-            Player: "@",
-            Wall: "|"
-        }
+        width, height = self.room_dimensions
+        characters = create_2d_list(width, height, fill=" ")
         
-        return "".join([
-            entity_type_to_character[type(entity)]
-            for entity in self.entities
-        ])
+        for entity in self.entities:
+            character = self._ENTITY_TYPE_TO_CHARACTER[type(entity)]
+            characters[entity.top][entity.left] = character         
             
-        
+        return stringify_2d_list(
+            characters,
+            row_separator="\n",
+            column_separator=""
+        )
+
     @staticmethod
     def _convert_text_map_to_entities(text_map_matrix: List[List[str]]):
         factory_map = TextUI._CHARACTER_TO_ENTITY_FACTORY
