@@ -1,6 +1,6 @@
 from typing import List, Tuple
 
-from rpgame.entities import Emptiness, Player, Wall
+from rpgame.entities import Player, Wall
 from rpgame.utils import create_2d_list, stringify_2d_list
 
 
