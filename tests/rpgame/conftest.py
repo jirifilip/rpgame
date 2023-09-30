@@ -5,16 +5,26 @@ from rpgame.text_ui import TextUI
 
 from typing import List, Tuple, Type
 
+from rpgame.game import Game
 
-def create_ui_with_player(text_map: str) -> Tuple[TextUI, Player]:
+
+
+def create_game(text_map: str) -> Tuple[TextUI, Game]:
     ui = TextUI.from_map(text_map)
-    players = filter_object_type(ui.entities, Player)
+
+    players = filter_entity_type(ui.entities, Player)
+    other_entities = filter_entity_not_of_type(ui.entities, Player)
+    player_facade = Game(players[0], other_entities)
     
-    return ui, players[0]
+    return ui, player_facade
 
 
-def filter_object_type(objects: List[object], desired_type: Type) -> List[object]:
+def filter_entity_type(objects: List[Entity], desired_type: Type) -> List[Entity]:
     return [o for o in objects if type(o) == desired_type ]
+
+
+def filter_entity_not_of_type(objects: List[Entity], desired_type: Type) -> List[Entity]:
+    return [o for o in objects if type(o) != desired_type ]
 
 
 @pytest.fixture

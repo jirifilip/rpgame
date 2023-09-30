@@ -1,6 +1,6 @@
 from typing import List, Tuple
 
-from rpgame.entities import Player, Wall
+from rpgame.entities import Gold, Player, Wall
 from rpgame.utils import create_2d_list, stringify_2d_list
 
 
@@ -10,11 +10,12 @@ class TextUI:
     _CHARACTER_TO_ENTITY_FACTORY = {
         "@": Player,
         "|": Wall,
-        "_": Wall,
+        "o": Gold
     }
     _ENTITY_TYPE_TO_CHARACTER = {
         Player: "@",
         Wall: "|",
+        Gold: "o"
     }
 
     def __init__(

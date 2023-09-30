@@ -1,6 +1,6 @@
 from rpgame.entities import Player, Wall
 from rpgame.text_ui import TextUI
-from tests.rpgame.conftest import create_ui_with_player
+from tests.rpgame.conftest import create_game
 
 
 def test_with_simple_1D_packed_map():
@@ -64,9 +64,9 @@ def test_when_2D_map_is_not_packed():
 
 
 def test_when_entities_change_position(larger_map):
-    ui, player = create_ui_with_player(larger_map)
+    ui, game = create_game(larger_map)
 
-    player.move(0, 1)
+    game.move_player(0, 1)
 
     expected_ui = (
 """
