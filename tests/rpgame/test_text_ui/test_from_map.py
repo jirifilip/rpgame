@@ -2,17 +2,17 @@ import pytest
 
 from rpgame.entities import Wall, Player
 from rpgame.text_ui import TextUI
-from tests.rpgame.conftest import create_ui_with_player, filter_object_type
+from tests.rpgame.conftest import filter_object_type
 
 
 @pytest.fixture
 def larger_map():
     yield (
 """
-|_____|
+|||||||
 | @   |
 |     |
-|_____|
+|||||||
 """
     )
     
@@ -21,30 +21,13 @@ def larger_map():
 def small_map():
     yield (
 """
-|_|
+|||
 | |
 |@|
-|_|
+|||
 """   
     )
-
     
-# def test_player_can_move_right(larger_map):
-#     ui, player = create_ui_with_player(larger_map)
-    
-#     player.move(1)
-#     player.move(0, 1)
-    
-#     expected_ui = (
-# """
-# |_____|
-# |     |
-# | @   |
-# |_____|
-# """
-#     )
-#     assert ui.render() == expected_ui    
-
     
 def test_can_be_initialized(small_map):
     ui = TextUI.from_map(small_map)
