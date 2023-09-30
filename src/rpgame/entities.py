@@ -1,10 +1,17 @@
-class Wall:
+from abc import ABC
+
+
+class Entity(ABC):
+    pass
+
+
+class Wall(Entity):
     def __init__(self, left: float, top: float):
         self.left = left
         self.top = top
 
 
-class Player:
+class Player(Entity):
     def __init__(self, left: float, top: float):
         self.left = left
         self.top = top

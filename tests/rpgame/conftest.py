@@ -1,6 +1,6 @@
 import pytest
 
-from rpgame.entities import Player
+from rpgame.entities import Entity, Player
 from rpgame.text_ui import TextUI
 
 from typing import List, Tuple, Type
@@ -39,3 +39,9 @@ def larger_map():
 |||||||
 """
     )
+
+
+def assert_entities_are_same_by_location(actual_entities: List[Entity], expected_entities: List[Entity]):
+    """Compares expected entities with actual entities by their location"""
+    for actual, expected in zip(actual_entities, expected_entities):
+        assert (actual.left, actual.top) == (expected.left, expected.top)
