@@ -1,3 +1,4 @@
+from rpgame.room import Room
 from rpgame.entities import Player, Wall
 from rpgame.text_ui import TextUI
 from tests.rpgame.conftest import create_game
@@ -9,9 +10,9 @@ def test_with_simple_1D_packed_map():
         Player(1, 0),
         Wall(2, 0),
     ]
-    ui = TextUI(room_dimensions=(3, 1), entities=entities_to_render)
+    room = Room(dimensions=(3, 1), entities=entities_to_render)
 
-    assert ui.render() == "|@|"
+    assert TextUI.render(room) == "|@|"
     
 
 def test_when_1D_map_is_not_packed():
@@ -20,9 +21,9 @@ def test_when_1D_map_is_not_packed():
         Player(2, 0),
         Wall(4, 0)
     ]
-    ui = TextUI(room_dimensions=(5, 1), entities=entities_to_render)
+    room = Room(dimensions=(5, 1), entities=entities_to_render)
     
-    assert ui.render() == "| @ |"
+    assert TextUI.render(room) == "| @ |"
 
 
 def test_when_2D_map_is_not_packed():
@@ -34,9 +35,9 @@ def test_when_2D_map_is_not_packed():
         Wall(1, 1),
         Wall(2, 1),
     ]
-    ui = TextUI(room_dimensions=(3, 2), entities=entities_to_render)
+    room = Room(dimensions=(3, 2), entities=entities_to_render)
     
-    assert ui.render() == (
+    assert TextUI.render(room) == (
 """
 |@|
 |||
@@ -53,9 +54,9 @@ def test_when_2D_map_is_not_packed():
         Wall(2, 1),
         Wall(4, 1),
     ]
-    ui = TextUI(room_dimensions=(5, 2), entities=entities_to_render)
+    room = Room(dimensions=(5, 2), entities=entities_to_render)
     
-    assert ui.render() == (
+    assert TextUI.render(room) == (
 """
 | @ |
 | | |
@@ -64,11 +65,11 @@ def test_when_2D_map_is_not_packed():
 
 
 def test_when_entities_change_position(larger_map):
-    ui, game = create_game(larger_map)
+    room, game = create_game(larger_map)
 
     game.move_player(0, 1)
 
-    expected_ui = (
+    expected_room = (
 """
 |||||||
 |     |
@@ -76,4 +77,4 @@ def test_when_entities_change_position(larger_map):
 |||||||
 """
     ).strip()
-    assert ui.render() == expected_ui
+    assert TextUI.render(room) == expected_room

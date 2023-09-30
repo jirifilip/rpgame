@@ -1,4 +1,5 @@
 import pytest
+from rpgame.room import Room
 
 from rpgame.entities import Entity, Player
 from rpgame.text_ui import TextUI
@@ -9,13 +10,13 @@ from rpgame.game import Game
 
 
 
-def create_game(text_map: str) -> Tuple[TextUI, Game]:
-    ui = TextUI.from_map(text_map)
+def create_game(text_map: str) -> Tuple[Room, Game]:
+    room = Room.from_text_map(text_map)
 
-    players = filter_entity_type(ui.entities, Player)
-    player_facade = Game(players[0], ui.entities)
+    players = filter_entity_type(room.entities, Player)
+    player_facade = Game(players[0], room.entities)
     
-    return ui, player_facade
+    return room, player_facade
 
 
 def filter_entity_type(objects: List[Entity], desired_type: Type) -> List[Entity]:
