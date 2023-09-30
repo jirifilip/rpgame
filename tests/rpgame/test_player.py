@@ -17,7 +17,7 @@ def test_player_can_move(player):
 def test_player_can_move_in_negative_direction(player):
     player.move(-1, -4)
 
-    assert(player.left, player.top) == (3, -1)
+    assert (player.left, player.top) == (3, -1)
 
 
 def test_player_can_move_only_vertically(player):

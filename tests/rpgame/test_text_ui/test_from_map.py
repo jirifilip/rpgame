@@ -1,34 +1,8 @@
-import pytest
-
 from rpgame.entities import Wall, Player
 from rpgame.text_ui import TextUI
 from tests.rpgame.conftest import filter_object_type
 
 
-@pytest.fixture
-def larger_map():
-    yield (
-"""
-|||||||
-| @   |
-|     |
-|||||||
-"""
-    )
-    
-    
-@pytest.fixture
-def small_map():
-    yield (
-"""
-|||
-| |
-|@|
-|||
-"""   
-    )
-    
-    
 def test_can_be_initialized(small_map):
     ui = TextUI.from_map(small_map)
     
