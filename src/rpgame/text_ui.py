@@ -39,6 +39,22 @@ class TextUI:
             column_separator=""
         )
 
+    @classmethod
+    def from_map(cls, text_map: str):
+        text_map_matrix = text_map.strip().split("\n")
+        
+        room_dimensions = cls._extract_room_dimensions(text_map_matrix)
+        
+        entities = cls._convert_text_map_to_entities(text_map_matrix)
+        return TextUI(room_dimensions=room_dimensions, entities=entities)
+
+    @staticmethod
+    def _extract_room_dimensions(text_map_matrix: List[List[str]]):
+        height = len(text_map_matrix)
+        width = len(text_map_matrix[0])
+        
+        return width, height
+
     @staticmethod
     def _convert_text_map_to_entities(text_map_matrix: List[List[str]]):
         factory_map = TextUI._CHARACTER_TO_ENTITY_FACTORY
@@ -49,21 +65,4 @@ class TextUI:
             for left_idx, character in enumerate(row)
             if character in factory_map
         ]
-        
-    @staticmethod
-    def _extract_room_dimensions(text_map_matrix: List[List[str]]):
-        height = len(text_map_matrix)
-        width = len(text_map_matrix[0])
-        
-        return width, height
-
-    @classmethod
-    def from_map(cls, text_map: str):
-        text_map_matrix = text_map.strip().split("\n")
-        
-        room_dimensions = cls._extract_room_dimensions(text_map_matrix)
-        
-        entities = cls._convert_text_map_to_entities(text_map_matrix)
-        return TextUI(room_dimensions=room_dimensions, entities=entities)
-
     
