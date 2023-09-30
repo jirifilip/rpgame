@@ -19,11 +19,9 @@ class TextUI:
 
     def __init__(
             self,
-            initial_state: str,
             room_dimensions: Tuple[int, int],
             entities = None,
         ):
-        self.state = initial_state
         self.room_dimensions = room_dimensions
         self.entities = entities
 
@@ -66,6 +64,6 @@ class TextUI:
         room_dimensions = cls._extract_room_dimensions(text_map_matrix)
         
         entities = cls._convert_text_map_to_entities(text_map_matrix)
-        return TextUI(initial_state="", room_dimensions=room_dimensions, entities=entities)
+        return TextUI(room_dimensions=room_dimensions, entities=entities)
 
     
