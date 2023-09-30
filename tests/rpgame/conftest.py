@@ -13,18 +13,13 @@ def create_game(text_map: str) -> Tuple[TextUI, Game]:
     ui = TextUI.from_map(text_map)
 
     players = filter_entity_type(ui.entities, Player)
-    other_entities = filter_entity_not_of_type(ui.entities, Player)
-    player_facade = Game(players[0], other_entities)
+    player_facade = Game(players[0], ui.entities)
     
     return ui, player_facade
 
 
 def filter_entity_type(objects: List[Entity], desired_type: Type) -> List[Entity]:
     return [o for o in objects if type(o) == desired_type ]
-
-
-def filter_entity_not_of_type(objects: List[Entity], desired_type: Type) -> List[Entity]:
-    return [o for o in objects if type(o) != desired_type ]
 
 
 @pytest.fixture
