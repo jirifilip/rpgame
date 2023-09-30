@@ -29,14 +29,14 @@ class TextUI:
 
     def render(self) -> str:
         width, height = self.room_dimensions
-        characters = create_2d_list(width, height, fill=" ")
+        render_matrix = create_2d_list(width, height, fill=" ")
         
         for entity in self.entities:
             character = self._ENTITY_TYPE_TO_CHARACTER[type(entity)]
-            characters[entity.top][entity.left] = character         
+            render_matrix[entity.top][entity.left] = character         
             
         return stringify_2d_list(
-            characters,
+            render_matrix,
             row_separator="\n",
             column_separator=""
         )
