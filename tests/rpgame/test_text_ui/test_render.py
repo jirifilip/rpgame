@@ -13,7 +13,7 @@ def test_with_simple_1D_packed_map():
     room = Room(dimensions=(3, 1), entities=entities_to_render)
 
     assert TextUI.render(room) == "|@|"
-    
+
 
 def test_when_1D_map_is_not_packed():
     entities_to_render = [
@@ -22,7 +22,7 @@ def test_when_1D_map_is_not_packed():
         Wall(4, 0)
     ]
     room = Room(dimensions=(5, 1), entities=entities_to_render)
-    
+
     assert TextUI.render(room) == "| @ |"
 
 
@@ -36,15 +36,15 @@ def test_when_2D_map_is_not_packed():
         Wall(2, 1),
     ]
     room = Room(dimensions=(3, 2), entities=entities_to_render)
-    
+
     assert TextUI.render(room) == (
 """
 |@|
 |||
 """
     ).strip()
-    
-    
+
+
 def test_when_2D_map_is_not_packed():
     entities_to_render = [
         Wall(0, 0),
@@ -55,7 +55,7 @@ def test_when_2D_map_is_not_packed():
         Wall(4, 1),
     ]
     room = Room(dimensions=(5, 2), entities=entities_to_render)
-    
+
     assert TextUI.render(room) == (
 """
 | @ |

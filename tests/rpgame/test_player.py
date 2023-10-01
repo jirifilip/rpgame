@@ -40,10 +40,10 @@ def test_player_can_pickup_gold(player):
     player.pickup(gold)
 
     assert player.inventory == [gold]
-    
-    
+
+
 def test_player_can_pickup_only_gold_in_same_location(player):
     gold = Gold(1, 1)
-    
+
     with pytest.raises(RuntimeError, match="Cannot pickup item, it's too far away"):
         player.pickup(gold)

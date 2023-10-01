@@ -17,11 +17,11 @@ class TextUI:
     def render(room: Room) -> str:
         width, height = room.dimensions
         render_matrix = create_2d_list(width, height, fill=" ")
-        
+
         for entity in room.entities:
             character = TextUI._ENTITY_TYPE_TO_CHARACTER[type(entity)]
-            render_matrix[entity.top][entity.left] = character         
-            
+            render_matrix[entity.top][entity.left] = character
+
         return stringify_2d_list(
             render_matrix,
             row_separator="\n",

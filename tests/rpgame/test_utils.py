@@ -32,12 +32,12 @@ def test_create_2d_list_filled_with_value():
 
 def test_stringify_2d_list(matrix):
     assert stringify_2d_list(matrix) == "abcdef"
-    
-    
+
+
 def test_stringify_2d_list_with_row_separators(matrix):
     assert stringify_2d_list(matrix, row_separator="\n") == "abc\ndef"
-    
-    
+
+
 def test_stringify_2d_list_with_column_separators(matrix):
     assert stringify_2d_list(matrix, column_separator="-") == "a-b-cd-e-f"
 

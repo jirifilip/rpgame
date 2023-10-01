@@ -15,7 +15,7 @@ class Game:
         for entity in self.entities:
             if entity == self.player:
                 continue
-            
+
             if self.player.is_in_same_location_as(entity) and type(entity) == Gold:
                 self.player.pickup(entity)
                 self.entities.remove(entity)
