@@ -1,13 +1,14 @@
+from typing import Dict, Type
 from rpgame.room import Room
 
-from rpgame.entities import Gold, Player, Wall
+from rpgame.entities import Entity, Gold, Player, Wall
 from rpgame.utils import create_2d_list, stringify_2d_list
 
 
 class TextUI:
     """renders game as text"""
 
-    _ENTITY_TYPE_TO_CHARACTER = {
+    _ENTITY_TYPE_TO_CHARACTER: Dict[Type[Entity], str] = {
         Player: "@",
         Wall: "|",
         Gold: "o"

@@ -1,10 +1,13 @@
-from typing import List, Tuple, Type
+from typing import Generic, List, Tuple, Type, TypeVar
 
 import pytest
 
 from rpgame.room import Room
 from rpgame.entities import Entity, Player
 from rpgame.game import Game
+
+
+T = TypeVar("T", bound=Entity)
 
 
 @pytest.fixture
@@ -46,5 +49,5 @@ def assert_entities_are_same_by_location(actual_entities: List[Entity], expected
         assert (actual.left, actual.top) == (expected.left, expected.top)
 
 
-def filter_entity_type(objects: List[Entity], desired_type: Type) -> List[Entity]:
+def filter_entity_type(objects: List[Entity], desired_type: Type[T]) -> List[T]:
     return [o for o in objects if type(o) == desired_type ]

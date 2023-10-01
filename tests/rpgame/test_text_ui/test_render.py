@@ -26,7 +26,7 @@ def test_when_1D_map_is_not_packed():
     assert TextUI.render(room) == "| @ |"
 
 
-def test_when_2D_map_is_not_packed():
+def test_when_2D_map_is_packed():
     entities_to_render = [
         Wall(0, 0),
         Player(1, 0),

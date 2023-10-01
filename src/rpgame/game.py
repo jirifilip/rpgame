@@ -9,7 +9,7 @@ class Game:
         self.player = player
         self.entities = entities
 
-    def move_player(self, left: float = 0, top: float = 0) -> None:
+    def move_player(self, left: int = 0, top: int = 0) -> None:
         self.player.move(left, top)
 
         for entity in self.entities:

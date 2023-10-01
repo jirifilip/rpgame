@@ -1,8 +1,9 @@
 from abc import ABC
+from typing import List
 
 
 class Entity(ABC):
-    def __init__(self, left: float, top: float) -> None:
+    def __init__(self, left: int, top: int) -> None:
         super().__init__()
         self.left = left
         self.top = top
@@ -23,11 +24,11 @@ class Gold(Entity):
 
 
 class Player(Entity):
-    def __init__(self, left: float, top: float):
+    def __init__(self, left: int, top: int):
         super().__init__(left, top)
-        self.inventory = []
+        self.inventory: List[Entity] = []
 
-    def move(self, left: float = 0, top: float = 0) -> None:
+    def move(self, left: int = 0, top: int = 0) -> None:
         self.left += left
         self.top += top
 

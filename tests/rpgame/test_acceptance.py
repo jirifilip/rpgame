@@ -5,7 +5,7 @@ from tests.rpgame.conftest import create_game
 
 
 @pytest.fixture
-def simple_text_map() -> str:
+def simple_text_map():
     yield (
 """
 | @ o |
