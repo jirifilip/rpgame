@@ -1,12 +1,8 @@
-from typing import Generic
-from typing import List
-from typing import Tuple
-from typing import Type
-from typing import TypeVar
+from typing import List, Tuple, Type, TypeVar
 
 import pytest
-from rpgame.entities import Entity
-from rpgame.entities import Player
+
+from rpgame.entities import Entity, Player
 from rpgame.game import Game
 from rpgame.room import Room
 
@@ -17,7 +13,7 @@ T = TypeVar("T", bound=Entity)
 @pytest.fixture
 def small_map():
     yield (
-"""
+        """
 |||
 | |
 |@|
@@ -29,7 +25,7 @@ def small_map():
 @pytest.fixture
 def larger_map():
     yield (
-"""
+        """
 |||||||
 | @   |
 |     |
@@ -54,4 +50,4 @@ def assert_entities_are_same_by_location(actual_entities: List[Entity], expected
 
 
 def filter_entity_type(objects: List[Entity], desired_type: Type[T]) -> List[T]:
-    return [o for o in objects if type(o) == desired_type ]
+    return [o for o in objects if isinstance(o, desired_type)]

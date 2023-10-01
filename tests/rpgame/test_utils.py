@@ -1,14 +1,11 @@
 import pytest
-from rpgame.utils import create_2d_list
-from rpgame.utils import stringify_2d_list
+
+from rpgame.utils import create_2d_list, stringify_2d_list
 
 
 @pytest.fixture
 def matrix():
-    yield [
-        ["a", "b", "c"],
-        ["d", "e", "f"]
-    ]
+    yield [["a", "b", "c"], ["d", "e", "f"]]
 
 
 def test_create_2d_list_filled_with_None():

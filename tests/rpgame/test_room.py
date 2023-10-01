@@ -1,9 +1,6 @@
-from rpgame.entities import Player
-from rpgame.entities import Wall
+from rpgame.entities import Player, Wall
 from rpgame.room import Room
-
-from tests.rpgame.conftest import assert_entities_are_same_by_location
-from tests.rpgame.conftest import filter_entity_type
+from tests.rpgame.conftest import assert_entities_are_same_by_location, filter_entity_type
 
 
 def test_has_correct_amount_of_entities(small_map):
@@ -14,7 +11,7 @@ def test_has_correct_amount_of_entities(small_map):
 
 def test_creates_correct_entities():
     text_map = (
-"""
+        """
 |||
 |@|
 | |
@@ -23,9 +20,14 @@ def test_creates_correct_entities():
     room = Room.from_text_map(text_map)
 
     expected_entities = [
-        Wall(0, 0), Wall(1, 0), Wall(2, 0),
-        Wall(0, 1), Player(1, 1), Wall(2, 1),
-        Wall(0, 2), Wall(2, 2)
+        Wall(0, 0),
+        Wall(1, 0),
+        Wall(2, 0),
+        Wall(0, 1),
+        Player(1, 1),
+        Wall(2, 1),
+        Wall(0, 2),
+        Wall(2, 2),
     ]
     assert_entities_are_same_by_location(room.entities, expected_entities)
 

@@ -24,3 +24,19 @@ pre-commit = "^3.4.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+atomic = true
+line_length = 120
+lines_after_imports = 2
+lines_between_types = 1
+use_parentheses = true
+balanced_wrapping = true
+include_trailing_comma = true
+multi_line_output = 3
+known_third_party = [
+    "pytest",
+]

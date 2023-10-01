@@ -1,8 +1,6 @@
 from typing import List
 
-from rpgame.entities import Entity
-from rpgame.entities import Gold
-from rpgame.entities import Player
+from rpgame.entities import Entity, Gold, Player
 
 
 class Game:
@@ -17,7 +15,7 @@ class Game:
             if entity == self.player:
                 continue
 
-            if self.player.is_in_same_location_as(entity) and type(entity) == Gold:
+            if self.player.is_in_same_location_as(entity) and isinstance(entity, Gold):
                 self.player.pickup(entity)
                 self.entities.remove(entity)
 

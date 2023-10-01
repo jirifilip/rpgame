@@ -1,11 +1,7 @@
 from dataclasses import dataclass
-from typing import List
-from typing import Tuple
+from typing import List, Tuple
 
-from rpgame.entities import Entity
-from rpgame.entities import Gold
-from rpgame.entities import Player
-from rpgame.entities import Wall
+from rpgame.entities import Entity, Gold, Player, Wall
 
 
 @dataclass(frozen=True, repr=True)
@@ -13,11 +9,7 @@ class Room:
     dimensions: Tuple[int, int]
     entities: List[Entity]
 
-    _CHARACTER_TO_ENTITY_FACTORY = {
-        "@": Player,
-        "|": Wall,
-        "o": Gold
-    }
+    _CHARACTER_TO_ENTITY_FACTORY = {"@": Player, "|": Wall, "o": Gold}
 
     @classmethod
     def from_text_map(cls, text_map: str):

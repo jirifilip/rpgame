@@ -1,13 +1,13 @@
 import pytest
-from rpgame.text_ui import TextUI
 
+from rpgame.text_ui import TextUI
 from tests.rpgame.conftest import create_game
 
 
 @pytest.fixture
 def simple_text_map():
     yield (
-"""
+        """
 | @ o |
 """
     ).strip()
@@ -33,7 +33,7 @@ def test_when_player_picks_up_an_item__it_disapperas_from_the_room(simple_text_m
     game.move_player(left=1)
 
     expected_ui = (
-"""
+        """
 |    @|
 """
     ).strip()
