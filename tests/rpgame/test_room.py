@@ -1,9 +1,9 @@
-from rpgame.entities import Wall, Player
+from rpgame.entities import Player
+from rpgame.entities import Wall
 from rpgame.room import Room
-from tests.rpgame.conftest import (
-    assert_entities_are_same_by_location,
-    filter_entity_type
-)
+
+from tests.rpgame.conftest import assert_entities_are_same_by_location
+from tests.rpgame.conftest import filter_entity_type
 
 
 def test_has_correct_amount_of_entities(small_map):

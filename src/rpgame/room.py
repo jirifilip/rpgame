@@ -1,8 +1,11 @@
-from rpgame.entities import Entity, Gold, Player, Wall
-
-
 from dataclasses import dataclass
-from typing import List, Tuple
+from typing import List
+from typing import Tuple
+
+from rpgame.entities import Entity
+from rpgame.entities import Gold
+from rpgame.entities import Player
+from rpgame.entities import Wall
 
 
 @dataclass(frozen=True, repr=True)

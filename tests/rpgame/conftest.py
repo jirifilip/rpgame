@@ -1,10 +1,14 @@
-from typing import Generic, List, Tuple, Type, TypeVar
+from typing import Generic
+from typing import List
+from typing import Tuple
+from typing import Type
+from typing import TypeVar
 
 import pytest
-
-from rpgame.room import Room
-from rpgame.entities import Entity, Player
+from rpgame.entities import Entity
+from rpgame.entities import Player
 from rpgame.game import Game
+from rpgame.room import Room
 
 
 T = TypeVar("T", bound=Entity)

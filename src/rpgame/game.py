@@ -1,7 +1,8 @@
-from rpgame.entities import Entity, Gold, Player
-
-
 from typing import List
+
+from rpgame.entities import Entity
+from rpgame.entities import Gold
+from rpgame.entities import Player
 
 
 class Game:

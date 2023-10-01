@@ -1,6 +1,6 @@
 import pytest
-
-from rpgame.entities import Gold, Player
+from rpgame.entities import Gold
+from rpgame.entities import Player
 
 
 @pytest.fixture

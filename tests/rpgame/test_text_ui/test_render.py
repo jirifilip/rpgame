@@ -1,6 +1,8 @@
+from rpgame.entities import Player
+from rpgame.entities import Wall
 from rpgame.room import Room
-from rpgame.entities import Player, Wall
 from rpgame.text_ui import TextUI
+
 from tests.rpgame.conftest import create_game
 
 

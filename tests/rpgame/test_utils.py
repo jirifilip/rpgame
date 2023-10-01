@@ -1,5 +1,4 @@
 import pytest
-
 from rpgame.utils import create_2d_list
 from rpgame.utils import stringify_2d_list
 
