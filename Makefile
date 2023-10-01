@@ -8,4 +8,4 @@ test: .poetry_installed
 
 
 pre-commit: .poetry_installed
-	poetry run pre-commit --all-files
+	poetry run pre-commit run --all-files
