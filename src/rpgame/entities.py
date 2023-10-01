@@ -1,12 +1,12 @@
 from abc import ABC
+from dataclasses import dataclass
 from typing import List
 
 
+@dataclass
 class Entity(ABC):
-    def __init__(self, left: int, top: int) -> None:
-        super().__init__()
-        self.left = left
-        self.top = top
+    left: int
+    top: int
 
     def is_in_same_location_as(self, other_entity: "Entity") -> bool:
         location = self.left, self.top
@@ -15,17 +15,19 @@ class Entity(ABC):
         return location == other_location
 
 
+@dataclass
 class Wall(Entity):
     pass
 
 
+@dataclass
 class Gold(Entity):
     pass
 
 
+@dataclass
 class Player(Entity):
-    def __init__(self, left: int, top: int):
-        super().__init__(left, top)
+    def __post_init__(self):
         self.inventory: List[Entity] = []
 
     def move(self, left: int = 0, top: int = 0) -> None:

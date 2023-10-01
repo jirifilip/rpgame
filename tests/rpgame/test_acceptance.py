@@ -28,5 +28,36 @@ def test_when_player_picks_up_an_item__it_disapperas_from_the_room(simple_text_m
     game.move_player(left=1)
     game.move_player(left=1)
 
-    expected_ui = "|    @|"
+    assert TextUI.render(room) == "|    @|"
+
+
+def test_player_cannot_move_horizontally_across_a_wall():
+    room, game = create_game("|  @|")
+
+    game.move_player(left=1)
+
+    assert TextUI.render(room) == "|  @|"
+
+
+def test_player_cannot_move_vertically_across_a_wall():
+    room, game = create_game(
+        """
+|||
+| |
+|@|
+|||
+                             """.strip()
+    )
+
+    game.move_player(top=1)
+
+    expected_ui = (
+        """
+|||
+| |
+|@|
+|||
+        """
+    ).strip()
+    print(room)
     assert TextUI.render(room) == expected_ui
