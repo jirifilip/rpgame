@@ -6,11 +6,7 @@ from tests.rpgame.conftest import create_game
 
 @pytest.fixture
 def simple_text_map():
-    yield (
-        """
-| @ o |
-"""
-    ).strip()
+    yield "| @ o |"
 
 
 def test_when_player_collides_with_an_item__it_ends_up_in_his_inventory(simple_text_map):
@@ -32,9 +28,5 @@ def test_when_player_picks_up_an_item__it_disapperas_from_the_room(simple_text_m
     game.move_player(left=1)
     game.move_player(left=1)
 
-    expected_ui = (
-        """
-|    @|
-"""
-    ).strip()
+    expected_ui = "|    @|"
     assert TextUI.render(room) == expected_ui
